@@ -2,7 +2,11 @@ class CoiNsController < ApplicationController
 
   # GET: /coins
   get "/coins" do
-    erb :"/coins/index.html"
+    if logged_in?
+      erb :"/coins/index.html"
+    else
+      erb :'login.html'
+    end
   end
 
   # GET: /coins/new

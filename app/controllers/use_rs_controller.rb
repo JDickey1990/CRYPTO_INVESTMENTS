@@ -1,37 +1,37 @@
 class UseRsController < ApplicationController
 
-  # GET: /use_rs
-  get "/use_rs" do
-    erb :"/use_rs/index.html"
+  # GET: /users
+  get "/users" do
+    erb :"/users/index.html"
   end
 
-  # GET: /use_rs/new
-  get "/use_rs/new" do
-    erb :"/use_rs/new.html"
+  # GET: /users/new
+  get "/users/new" do
+    erb :"/users/new.html"
   end
 
-  # POST: /use_rs
-  post "/use_rs" do
-    redirect "/use_rs"
+  # POST: /users
+  post "/users" do
+    redirect "/users"
   end
 
-  # GET: /use_rs/5
-  get "/use_rs/:id" do
-    erb :"/use_rs/show.html"
+  # GET: /users/5
+  get "/users/:id" do
+    erb :"/users/show.html"
   end
 
-  # GET: /use_rs/5/edit
-  get "/use_rs/:id/edit" do
-    erb :"/use_rs/edit.html"
+  # GET: /users/5/edit
+  get "/users/:id/edit" do
+    erb :"/users/edit.html"
   end
 
-  # PATCH: /use_rs/5
-  patch "/use_rs/:id" do
-    redirect "/use_rs/:id"
+  # PATCH: /users/5
+  patch "/users/:id" do
+    redirect "/users/:id"
   end
 
-  # DELETE: /use_rs/5/delete
-  delete "/use_rs/:id/delete" do
-    redirect "/use_rs"
+  # DELETE: /users/5/delete
+  delete "/users/:id/delete" do
+    redirect "/users"
   end
 end

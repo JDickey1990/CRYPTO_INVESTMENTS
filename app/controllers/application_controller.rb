@@ -57,12 +57,27 @@ end
   end
 
   post '/login' do 
+    # binding.pry
+    if params[:username] == "" || params[:password] == "" 
+        redirect "/login"
+    else 
+        user = User.find_by(username: params[:username])
+        if user.save
+            session[:user_id] = user.id
+            redirect "/coins"
+        else
+            redirect "/login"
+        end
     
-  end
+    end
+end
 
   get '/logout' do 
     session.clear
     erb :'logout.html'
   end
+
+  
+ 
 
 end

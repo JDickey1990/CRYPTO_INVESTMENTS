@@ -1,1 +1,54 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div class="container">
+  <header><></header>
+  <div class="col-md-8 col-md-offset-2">
+  
+    <div class="content">
+    
+<h1><%="#{@coin.name}"%></h1>
+<h2><%="Symbol: #{@coin.symbol}"%></h2>
+<h2><%="Coin Quantity: #{@coin.quantity}"%></h2>
+<h2><%="Amount Invested: #{@coin.amount_invested}"%></h2>
+<h2><%="Average Coin Price: #{@coin.average_coin_price}"%></h2>
+
+
+<form action="/coins/<%= @coin.id %>/delete" method="post">
+<input id="hidden" type="hidden" name="_method" value="delete">
+<input type="submit" value="delete">
+</form>
+
+
+<p>
+<h3>Make changes to your crypto investment here</h3>
+<form action= "/coins/<%= @coin.id %>" method= "post">
+<input id="hidden" type="hidden" name="_method" value="patch">
+<br><label>Coin Name<label><br>
+<input type = "text" name = "name"id = "name"><br>
+<br><label>Coin Symbol<label><br>
+<input type = "text" name = "symbol"id = "symbol"><br>
+<br><label>Coin Quantity<label><br>
+<input type = "text" name = "quantity"id = "quantity"><br>
+<br><label>Amount Invested<label><br>
+<input type = "text" name = "amount_invested"id = "amount_invested"><br>
+<br><label>Average Coin Price<label><br>
+<input type = "text" name = "average_coin_price"id = "average_coin_price "><br>
+<br><input type= submit value= "Submit">
+</p>
+</form>
+
+    </div>
+
+    <div class="sidebar">
+      <h3>Links</h3>
+      <li><b><br><a href="/coins/<%=@coin.id%>/edit">Edit this Investment</a><br></li>
+        <li><b><br><a href="/coins/new">New Coin Transaction</a><br><li>
+        <li><b><br><a href="/logout">Log Out</a><br></li>
+        <li><b><br><a href="/coins">All Crypto Investments</a><br></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+
+

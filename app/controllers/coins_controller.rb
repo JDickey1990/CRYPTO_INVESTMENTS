@@ -3,6 +3,8 @@ class CoiNsController < ApplicationController
   # GET: /coins
   get "/coins" do
     if logged_in?
+      @user = User.find_by(session[:user_id])
+      @coins = @user.coins.all
       erb :"/coins/index.html"
     else
       erb :'login.html'
@@ -16,16 +18,21 @@ class CoiNsController < ApplicationController
 
   # POST: /coins
   post "/coins" do
-    redirect "/coins"
+    # binding.pry
+    user = User.find_by(session[:user_id])
+    @coin =user.coins.create(params)
+    redirect "/coins/#{@coin.id}"
   end
 
   # GET: /coins/5
   get "/coins/:id" do
+    @coin = Coin.find_by_id(params[:id])
     erb :"/coins/show.html"
   end
 
   # GET: /coins/5/edit
   get "/coins/:id/edit" do
+    @coin = Coin.find_by_id(params[:id])
     erb :"/coins/edit.html"
   end
 
@@ -36,6 +43,11 @@ class CoiNsController < ApplicationController
 
   # DELETE: /coins/5/delete
   delete "/coins/:id/delete" do
+    @coin = Coin.find_by_id(params[:id])
+    @coin.destroy
     redirect "/coins"
   end
+
+
+
 end

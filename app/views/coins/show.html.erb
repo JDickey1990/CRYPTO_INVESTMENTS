@@ -1,1 +1,24 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<div class="container">
+  <header><></header>
+  <div class="col-md-8 col-md-offset-2">
+    <h2><%= "#{@coin.name}"%></h2>
+    <div class="content">
+      <h3><%= "Coin Symbol:#{@coin.symbol}"%><h3>
+      <h3><%= "Coin Quantity:#{@coin.quantity}"%><h3>
+      <h3><%= "Amount Invested:#{@coin.amount_invested}"%><h3>
+      <h3><%= "Average Coin Price:#{@coin.average_coin_price}"%><h3></p>
+        
+    </div>
+
+    <div class="sidebar">
+      <h3>Links</h3>
+      <li><b><br><a href="/coins/<%=@coin.id%>/edit">Edit this Investment</a><br></li>
+        <li><b><br><a href="/coins/new">New Coin Transaction</a><br><li>
+        <li><b><br><a href="/logout">Log Out</a><br></li>
+        <li><b><br><a href="/coins">All Crypto Investments</a><br></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+

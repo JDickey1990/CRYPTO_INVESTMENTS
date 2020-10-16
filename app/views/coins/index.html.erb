@@ -1,4 +1,27 @@
-<h1>This is the Model's index page.</h1>
+<div class="container">
+  <header><></header>
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Welcome, <%=@user.username%>
+    <h2>List of all Crypto Investments.</h2>
+
+    <div class="content">
+      <p><% @coins.each do |coin| %>
+        <h1><%= "#{coin.name}"%></h1>
+        <h3><%= "Coin Symbol:#{coin.symbol}"%><h3>
+        <li><b><br><a href= <%="/coins/#{coin.id}"%>>Details...</a><br></li>
+        <% end %></p>
+    </div>
+
+
+    <div class="sidebar">
+      <h3>Links</h3>
+        <li><b><br><a href="/coins/new">New Coin Transaction</a><br>
+        <li><b><br><a href="/logout">Log Out</a><br></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
 
 
 
@@ -7,11 +30,3 @@
 
 
 
-
-
-
-
-
-
-
-<a href="/logout">Log Out</a>

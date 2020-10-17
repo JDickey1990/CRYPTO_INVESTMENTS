@@ -7,7 +7,13 @@
       <h3><%= "Coin Quantity:#{@coin.quantity}"%><h3>
       <h3><%= "Amount Invested:#{@coin.amount_invested}"%><h3>
       <h3><%= "Average Coin Price:#{@coin.average_coin_price}"%><h3></p>
+      <li><b><br><a href="/coins/<%=@coin.id%>/purchased">Purchased</a><br></li>
         
+    <br>
+    <form action="/coins/<%= @coin.id %>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete">
+    </form>
     </div>
 
     <div class="sidebar">

@@ -1,1 +1,36 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<div class="container">
+  <header><></header>
+  <div class="col-md-8 col-md-offset-2">
+   
+    <div class="content">
+    <h2><%= "USERNAME: #{@user.username.upcase}"%></h2><br>
+    <br><h3><%= "Account was created:#{@user.created_at}"%></h3>
+    <br><h3><%= "Account was updated:#{@user.updated_at}"%></h3>
+
+    <p><% @coins.each do |coin| %>
+        <h1><%= "#{coin.name}"%></h1>
+        <h3><%= "Coin Symbol:#{coin.symbol}"%><h3>
+        <br><h3><%= "#{coin.name} was created:#{coin.created_at}"%></h3>
+        <h3><%= "#{coin.name} was updated:#{coin.updated_at}"%></h3>
+        <li><b><br><a href= <%="/coins/#{coin.id}"%>>Details...</a><br></li>
+        <% end %></p>
+
+
+    <br>
+    <form action="/users/<%= @user.id %>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="DELETE ACCOUNT">
+    </form>
+    </div>
+
+    <div class="sidebar">
+      <h3>Links</h3>
+      <li><b><br><a href="/users/<%=@user.id%>/edit">Edit this User</a><br></li>
+        <li><b><br><a href="/coins/new">New Coin Transaction</a><br><li>
+        <li><b><br><a href="/logout">Log Out</a><br></li>
+        <li><b><br><a href="/coins">All Crypto Investments</a><br></li>
+      </ul>
+    </div>
+
+  </div>
+</div>

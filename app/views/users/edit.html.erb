@@ -1,1 +1,9 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<p>
+<h1>Make changes to your User account info here</h1>
+<form action= "/users/<%= @user.id %>" method= "post">
+<input id="hidden" type="hidden" name="_method" value="patch">
+<br><label>Username<label><br>
+<input type = "text" name = "username"id = "username" placeholder=<%="#{@user.username}"%>><br>
+<br><input type= submit value= "Submit">
+</p>
+</form>

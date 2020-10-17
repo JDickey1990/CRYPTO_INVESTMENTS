@@ -1,7 +1,7 @@
 <div class="container">
   <header><></header>
   <div class="col-md-8 col-md-offset-2">
-    <h1>Welcome, <%=@user.username%>
+    <h1>Welcome, <%=@user.username.upcase%>
     <h2>List of all Crypto Investments.</h2>
 
     <div class="content">
@@ -17,6 +17,7 @@
       <h3>Links</h3>
         <li><b><br><a href="/coins/new">New Coin Transaction</a><br>
         <li><b><br><a href="/logout">Log Out</a><br></li>
+        <li><b><br><a href=<%="/users/#{@user.id}"%>>User Profile</a><br></li>
       </ul>
     </div>
 

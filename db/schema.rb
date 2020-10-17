@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20201014195358) do
   create_table "coins", force: :cascade do |t|
     t.string   "name"
     t.string   "symbol"
-    t.integer  "quantity"
-    t.integer  "amount_invested"
-    t.integer  "average_coin_price"
+    t.decimal  "quantity"
+    t.float    "amount_invested"
+    t.float    "average_coin_price"
     t.string   "user_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false

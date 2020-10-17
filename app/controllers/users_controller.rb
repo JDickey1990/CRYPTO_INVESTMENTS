@@ -1,37 +1,89 @@
 class UseRsController < ApplicationController
 
-  # GET: /users
-  get "/users" do
-    erb :"/users/index.html"
+  # GET: /login
+  get "/login" do
+    if logged_in?
+      redirect to '/coins' 
+    else
+      erb :"/users/login.html"
+    end
+  end
+
+  post '/login' do 
+    #  binding.pry
+    if params[:username] == "" || params[:password] == "" 
+        redirect "/login"
+    else 
+        user = User.find_by(username: params[:username])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            redirect "/coins"
+        else
+            redirect "/login"
+        end
+    end
   end
 
   # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
+  get "/signup" do
+    if logged_in?
+        redirect to '/coins' 
+    else
+      erb :"/users/signup.html"
+    end
   end
 
   # POST: /users
-  post "/users" do
-    redirect "/users"
+  post "/signup" do
+      u = User.find_by(username: params[:username])
+    if u != nil || params[:username] == "" || params[:password] == "" 
+        redirect "/signup"
+    else
+        user = User.new(:username => params[:username], :password => params[:password])	
+        if user.save
+            session[:user_id] = user.id
+            redirect "/coins"
+        else
+            redirect "/signup"
+        end
+      end
+  end
+
+  get '/logout' do 
+    session.destroy
+    erb :'logout.html'
   end
 
   # GET: /users/5
   get "/users/:id" do
+    @user = User.find_by_id(params[:id])
+    @coins = @user.coins.all
+
     erb :"/users/show.html"
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    @user = User.find_by_id(params[:id])
     erb :"/users/edit.html"
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
-    redirect "/users/:id"
+    @user = User.find_by_id(params[:id])
+    @user.username = params[:username]
+    @user.save
+    redirect "/users/#{@user.id}"
   end
+  
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
-    redirect "/users"
+  user = User.find_by_id(params[:id])
+  session.clear
+  user.destroy
+    redirect "/"
   end
 end
+
+

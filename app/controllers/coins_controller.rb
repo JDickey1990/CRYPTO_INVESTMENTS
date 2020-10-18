@@ -106,6 +106,11 @@ class CoiNsController < ApplicationController
   # GET: /coins/:id/sold
   get "/coins/:id/sold" do
     @coin = Coin.find_by_id(params[:id])
+    if @coin.user_id.to_i != current_user.id
+      redirect '/coins'
+    else
+      #flash error
+    end
     erb :"/coins/sold.html"
   end
 

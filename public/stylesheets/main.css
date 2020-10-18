@@ -13,7 +13,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: grey;
+    background-color: white;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
@@ -21,11 +21,11 @@
 
   .wrapper {
     background: #fff;
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.1);
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
     margin: auto;
-    max-width: 960px;
+    max-width: 1200px;
     padding: 2.25%; /* 18px / 800px */
     width: 100%;
   }
@@ -62,11 +62,11 @@
   }
 
   .sidebar {
-    background: #eee;
-    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.5);
     float: right;
-    padding: 2.08333333333%; /* 5px / 240px */
-    width: 30%; /* 240px / 800px */
+    padding: 2.08333333333%;
+    width: 30%;
+    margin-top: 309px;
   }
 
   .sidebar ul {
@@ -130,6 +130,7 @@
 }
 
 .relative {
+  
   position: relative;
 }
 
@@ -157,10 +158,29 @@
 }
 
 .heading-overlay4 {
-  top: 6rem;
-  right: 8rem;
+  top: 4rem;
+  left: 10rem;
+}
+
+.heading-overlay5 {
+  bottom: 2rem;
+  left: 2rem;
 }
 
 .black {
   color: black;
+}
+
+.red {
+  color: red;
+}
+
+.grey {
+  color: rgb(81, 81, 82);
+}
+
+.mountain-bg{
+  background: url("../images/paula-vermeulen-_f2m3mEkaaU-unsplash.jpg") no-repeat right top;
+  height: 500px;
+  background-size: cover;
 }

@@ -71,18 +71,22 @@ class UseRsController < ApplicationController
   # PATCH: /users/5
   patch "/users/:id" do
     @user = User.find_by_id(params[:id])
-    @user.username = params[:username]
-    @user.save
-    redirect "/users/#{@user.id}"
+    if params[:username] == "" 
+      redirect "/users/#{@user.id}"
+    else
+      @user.username = params[:username]
+      @user.save
+      redirect "/users/#{@user.id}"
+    end
   end
   
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
-  user = User.find_by_id(params[:id])
-  session.clear
-  user.destroy
-    redirect "/"
+    user = User.find_by_id(params[:id])
+    session.clear
+    user.destroy
+      redirect "/login"
   end
 end
 

@@ -2,8 +2,7 @@ class CoiNsController < ApplicationController
 
   # GET: /coins
   get "/coins" do
-  # binding.pry
-    if logged_in?
+    if logged_in? 
       @user = User.find_by_id(session[:user_id])
       @coins = @user.coins.all
       erb :"/coins/index.html"
@@ -31,8 +30,14 @@ class CoiNsController < ApplicationController
 
   # GET: /coins/5
   get "/coins/:id" do
-    @coin = Coin.find_by_id(params[:id])
-    erb :"/coins/show.html"
+    # binding.pry
+    @coin = Coin.find(params[:id])
+    if @coin.user_id.to_i != current_user.id
+        #flash error
+        redirect "/coins"
+    else 
+      erb  :"/coins/show.html"
+    end 
   end
 
 
@@ -40,15 +45,23 @@ class CoiNsController < ApplicationController
   # GET: /coins/5/edit
   get "/coins/:id/edit" do
     @coin = Coin.find_by_id(params[:id])
-    erb :"/coins/edit.html"
+    if @coin.user_id == current_user.id
+      erb :"/coins/edit.html"
+    else 
+      #flash error
+    end
+    redirect "/coins"
   end
 
   # PATCH: /coins/5
   patch "/coins/:id" do
-    @coin = Coin.find_by_id(params[:id])
+    # binding.pry
+    @coin = Coin.find(params[:id])
     if params[:name] == "" || params[:symbol] == "" || params[:quantity] == "" || params[:amount_invested] == "" || params[:average_coin_price] == ""  
       redirect "/coins/#{@coin.id}/edit"
-    else 
+    elsif  @coin.user_id != current_user.id  
+      redirect "/coins/#{@coin.id}/edit"
+    else  
       @coin.name = params[:name]
       @coin.symbol = params[:symbol]
       @coin.quantity = params[:quantity]

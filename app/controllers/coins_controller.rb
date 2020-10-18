@@ -33,7 +33,7 @@ class CoiNsController < ApplicationController
     # binding.pry
     @coin = Coin.find(params[:id])
     if @coin.user_id.to_i != current_user.id
-        #flash error
+        # flash[:alert] = "Access Denied"
         redirect "/coins"
     else 
       erb  :"/coins/show.html"
@@ -45,12 +45,12 @@ class CoiNsController < ApplicationController
   # GET: /coins/5/edit
   get "/coins/:id/edit" do
     @coin = Coin.find_by_id(params[:id])
-    if @coin.user_id == current_user.id
-      erb :"/coins/edit.html"
+    if @coin.user_id.to_i != current_user.id
+      redirect "/coins"
     else 
       #flash error
     end
-    redirect "/coins"
+    erb :"/coins/edit.html"
   end
 
   # PATCH: /coins/5
@@ -75,7 +75,12 @@ class CoiNsController < ApplicationController
   # GET: /coins/:id/purchased
   get "/coins/:id/purchased" do
     @coin = Coin.find_by_id(params[:id])
-    erb :"/coins/purchased.html"
+    if @coin.user_id.to_i != current_user.id
+      redirect "/coins"
+    else 
+      #flash error
+    end
+    erb :"/coins/edit.html"
   end
 
   # PATCH: /coins/5/purchased

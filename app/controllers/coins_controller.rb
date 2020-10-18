@@ -35,6 +35,8 @@ class CoiNsController < ApplicationController
     erb :"/coins/show.html"
   end
 
+
+
   # GET: /coins/5/edit
   get "/coins/:id/edit" do
     @coin = Coin.find_by_id(params[:id])
@@ -44,13 +46,17 @@ class CoiNsController < ApplicationController
   # PATCH: /coins/5
   patch "/coins/:id" do
     @coin = Coin.find_by_id(params[:id])
-    @coin.name = params[:name]
-    @coin.symbol = params[:symbol]
-    @coin.quantity = params[:quantity]
-    @coin.amount_invested = params[:amount_invested]
-    @coin.average_coin_price = params[:average_coin_price]
-    @coin.save
-    redirect "/coins/#{@coin.id}"
+    if params[:name] == "" || params[:symbol] == "" || params[:quantity] == "" || params[:amount_invested] == "" || params[:average_coin_price] == ""  
+      redirect "/coins/#{@coin.id}/edit"
+    else 
+      @coin.name = params[:name]
+      @coin.symbol = params[:symbol]
+      @coin.quantity = params[:quantity]
+      @coin.amount_invested = params[:amount_invested]
+      @coin.average_coin_price = params[:average_coin_price]
+      @coin.save
+      redirect "/coins/#{@coin.id}"
+    end
   end
 
   # GET: /coins/:id/purchased

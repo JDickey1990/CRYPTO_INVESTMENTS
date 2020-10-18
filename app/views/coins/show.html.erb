@@ -7,7 +7,8 @@
       <h3><%= "Coin Quantity:#{@coin.quantity}"%><h3>
       <h3><%= "Amount Invested:#{@coin.amount_invested}"%><h3>
       <h3><%= "Average Coin Price:#{@coin.average_coin_price}"%><h3></p>
-      <li><b><br><a href="/coins/<%=@coin.id%>/purchased">Purchased</a><br></li>
+      <br><li><b><br><a href="/coins/<%=@coin.id%>/purchased">Update with recent BUY transactions</a><br></li>
+      <li><b><br><a href="/coins/<%=@coin.id%>/sold">Update with recent SELL transactions</a><br></li><br>
         
     <br>
     <form action="/coins/<%= @coin.id %>/delete" method="post">

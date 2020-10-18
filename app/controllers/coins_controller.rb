@@ -52,14 +52,12 @@ class CoiNsController < ApplicationController
     @coin.save
     redirect "/coins/#{@coin.id}"
   end
- 
 
-
-    # GET: /coins/:id/purchased
-    get "/coins/:id/purchased" do
-      @coin = Coin.find_by_id(params[:id])
-      erb :"/coins/purchased.html"
-    end
+  # GET: /coins/:id/purchased
+  get "/coins/:id/purchased" do
+    @coin = Coin.find_by_id(params[:id])
+    erb :"/coins/purchased.html"
+  end
 
   # PATCH: /coins/5/purchased
   patch "/coins/:id/purchased" do
@@ -72,6 +70,32 @@ class CoiNsController < ApplicationController
     c= @coin.amount_invested
     d= params[:cost].to_f
     @coin.amount_invested = c+d
+  
+    e = @coin.amount_invested
+    f = @coin.quantity
+   @coin.average_coin_price = e/f
+    @coin.save
+    redirect "/coins/#{@coin.id}"
+  end
+
+  
+  # GET: /coins/:id/sold
+  get "/coins/:id/sold" do
+    @coin = Coin.find_by_id(params[:id])
+    erb :"/coins/sold.html"
+  end
+
+   # PATCH: /coins/5/sold
+   patch "/coins/:id/sold" do
+    #  binding.pry
+    @coin = Coin.find_by_id(params[:id])
+    a= @coin.quantity 
+    b = params[:quantity].to_d
+    @coin.quantity = a-b
+
+    c= @coin.amount_invested
+    d= params[:cost].to_i
+    @coin.amount_invested = c-d
   
     e = @coin.amount_invested
     f = @coin.quantity

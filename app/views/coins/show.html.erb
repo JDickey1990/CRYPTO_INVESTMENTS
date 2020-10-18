@@ -1,31 +1,34 @@
+
 <div class="container">
-  <header><></header>
-  <div class="col-md-8 col-md-offset-2">
-    <h2><%= "#{@coin.name}"%></h2>
-    <div class="content">
-      <h3><%= "Coin Symbol:#{@coin.symbol}"%><h3>
-      <h3><%= "Coin Quantity:#{@coin.quantity}"%><h3>
-      <h3><%= "Amount Invested:#{@coin.amount_invested}"%><h3>
-      <h3><%= "Average Coin Price:#{@coin.average_coin_price}"%><h3></p>
-      <br><li><b><br><a href="/coins/<%=@coin.id%>/purchased">Update with recent BUY transactions</a><br></li>
-      <li><b><br><a href="/coins/<%=@coin.id%>/sold">Update with recent SELL transactions</a><br></li><br>
-        
-    <br>
+<header class="relative">
+
+  <img src="images/paula-vermeulen-_f2m3mEkaaU-unsplash.jpg" class="img-responsive main-image">
+  <h1 class="white absolute heading-overlay">Crypto Investments</h1>
+
+  <h2><%= "#{@coin.name}"%></h2>
+
+  <h3><%= "Coin Symbol:#{@coin.symbol}"%><h3>
+  <h3><%= "Coin Quantity:#{@coin.quantity}"%><h3>
+  <h3><%= "Amount Invested:#{@coin.amount_invested}"%><h3>
+  <h3><%= "Average Coin Price:#{@coin.average_coin_price}"%><h3></p>
+  <br><li><b><br><a href="/coins/<%=@coin.id%>/purchased">Update with recent BUY transactions</a><br></li>
+  <li><b><br><a href="/coins/<%=@coin.id%>/sold">Update with recent SELL transactions</a><br></li><br>
+
     <form action="/coins/<%= @coin.id %>/delete" method="post">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="delete">
     </form>
     </div>
 
-    <div class="sidebar">
-      <h3>Links</h3>
-      <li><b><br><a href="/coins/<%=@coin.id%>/edit">Edit this Investment</a><br></li>
-        <li><b><br><a href="/coins/new">New Coin Transaction</a><br><li>
-        <li><b><br><a href="/logout">Log Out</a><br></li>
-        <li><b><br><a href="/coins">All Crypto Investments</a><br></li>
-      </ul>
-    </div>
 
+    <div class="sidebar">
+    <h3 class=absolute heading-overlay>Links</h3>
+    <li><b><br><a href="/coins/<%=@coin.id%>/edit">Edit this Investment</a><br></li>
+      <li><b><br><a href="/coins/new">New Coin Transaction</a><br><li>
+      <li><b><br><a href="/logout">Log Out</a><br></li>
+      <li><b><br><a href="/coins">All Crypto Investments</a><br></li>
+    </ul>
   </div>
+  </h3>
 </div>
 

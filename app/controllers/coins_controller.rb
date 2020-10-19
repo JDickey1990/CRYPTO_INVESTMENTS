@@ -80,7 +80,7 @@ class CoiNsController < ApplicationController
     else 
       #flash error
     end
-    erb :"/coins/edit.html"
+    erb :"/coins/purchased.html"
   end
 
   # PATCH: /coins/5/purchased

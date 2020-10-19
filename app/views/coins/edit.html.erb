@@ -1,9 +1,19 @@
 <div class="container">
-  <header><></header>
-  <div class="col-md-8 col-md-offset-2">
-  
-    <div class="content">
+<header class="relative mountain-bg">
+
+  <h1 class="black absolute heading-overlay">Crypto Investments</h1>
+  <h2 class="red absolute heading-overlay6">List of Investments</h2>
     
+  <h3 class="black absolute heading-overlay7">
+  <% @coins.each do |coin| %><br>
+  <%= "#{coin.name}"%><br>
+  <%= "Coin Symbol:#{coin.symbol}"%>
+  <li><b><br><a href= <%="/coins/#{coin.id}"%> class="red">Details...</a><br></li>
+  <% end %></p>
+ </h3>
+
+
+
 <h1><%="#{@coin.name}"%></h1>
 <h2><%="Symbol: #{@coin.symbol}"%></h2>
 <h2><%="Coin Quantity: #{@coin.quantity}"%></h2>

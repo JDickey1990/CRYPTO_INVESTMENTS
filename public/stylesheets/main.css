@@ -69,6 +69,22 @@
     margin-top: 309px;
   }
 
+  .sidebarss {
+    background: rgba(255, 255, 255, 0.5);
+    float: right;
+    padding: 2.08333333333%;
+    width: 30%;
+    margin-top: 440px;
+  }
+
+  .sidebarsss {
+    background: rgba(255, 255, 255, 0.5);
+    float: right;
+    padding: 2.08333333333%;
+    width: 30%;
+    margin-top: 269px;
+  }
+
   .sidebar ul {
     font-size: 14px;
   }
@@ -172,6 +188,11 @@
   right: 3rem;
 }
 
+.heading-overlay7 {
+  top: 11rem;
+  left: 12rem;
+}
+
 .black {
   color: black;
 }
@@ -186,6 +207,20 @@
 
 .mountain-bg{
   background: url("../images/paula-vermeulen-_f2m3mEkaaU-unsplash.jpg") no-repeat right top;
-  height: 500px;
+  height: 1000px;
   background-size: cover;
 }
+.coin-display {
+  margin-bottom: 2rem;
+}
+
+.small-text{
+  font-size: .75rem;
+}
+
+.coin-details-bg{
+  background: url("../images/andre-francois-mckenzie-Q4W8GjjKjuw-unsplash.jpg") no-repeat right top;
+  height: 650px;
+  background-size: cover;
+}
+

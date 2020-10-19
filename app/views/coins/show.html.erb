@@ -1,32 +1,33 @@
 
 <div class="container">
-<header class="relative mountain-bg">
+  <header class="relative coin-details-bg">
 
-  <h1 class="black absolute heading-overlay">Crypto Investments</h1>
+    <h1 class="white absolute heading-overlay">Crypto Investments</h1>
 
-  <h3 class="black absolute heading-overlay4"><%= "#{@coin.name}"%>
-    <%= "Coin Symbol:#{@coin.symbol}"%><br>
-    <%= "Coin Quantity:#{@coin.quantity}"%><br>
-    <%= "Amount Invested:#{@coin.amount_invested}"%><br>
-    <%= "Average Coin Price:#{@coin.average_coin_price}"%>
-   </h3>
-
-   <h3 class="black absolute heading-overlay5">
-      <li><a href="/coins/<%=@coin.id%>/purchased" class="grey" >Update with recent BUY transactions</a></li>
-      <li><a href="/coins/<%=@coin.id%>/sold" class="grey"" >Update with recent SELL transactions</a></li>
-
-      <form action="/coins/<%= @coin.id %>/delete" method="post">
-        <input id="hidden" type="hidden" name="_method" value="delete">
-        <input type="submit" value="DELETE THIS INVESTMENT"class="red bold">
-      </form>
+    <h3 class="white absolute heading-overlay4"><%= "#{@coin.name}"%><br>
+      <%= "Coin Symbol:#{@coin.symbol}"%><br>
+      <%= "Coin Quantity:#{@coin.quantity}"%><br>
+      <%= "Amount Invested:#{@coin.amount_invested}"%><br>
+      <%= "Average Coin Price:#{@coin.average_coin_price}"%>
     </h3>
 
-  <div class="sidebar">
-    <h3 class=absolute heading-overlay>Links</h3><br>
-      <li><b><br><a href="/coins/<%=@coin.id%>/edit" class="grey" >Edit this Investment</a><br></li>
-      <li><b><br><a href="/coins/new"class="grey" >New Coin Transaction</a><br><li>
-      <li><b><br><a href="/logout" class="grey" >Log Out</a><br></li>
-      <li><b><br><a href="/coins" class="grey" >All Crypto Investments</a><br></li>
-  </div> 
+    <h3 class="black absolute heading-overlay5">
+        <li><a href="/coins/<%=@coin.id%>/purchased" class="white" >Update with recent BUY transactions</a></li>
+        <li><a href="/coins/<%=@coin.id%>/sold" class="white" >Update with recent SELL transactions</a></li>
+
+        <form action="/coins/<%= @coin.id %>/delete" method="post">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <input type="submit" value="DELETE THIS INVESTMENT"class="red bold">
+        </form>
+     </h3>
+
+    <div class="sidebarss">
+      <h3 class=absolute heading-overlay>Links</h3><br>
+        <li><b><br><a href="/coins/<%=@coin.id%>/edit" class="grey" >Edit this Investment</a><br></li>
+        <li><b><br><a href="/coins/new"class="grey" >New Coin Transaction</a><br><li>
+        <li><b><br><a href="/logout" class="grey" >Log Out</a><br></li>
+        <li><b><br><a href="/coins" class="grey" >All Crypto Investments</a><br></li>
+    </div> 
+  </header>
 </div>
 

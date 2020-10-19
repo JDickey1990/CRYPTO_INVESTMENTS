@@ -130,7 +130,7 @@
 }
 
 .relative {
-  
+
   position: relative;
 }
 
@@ -165,6 +165,11 @@
 .heading-overlay5 {
   bottom: 2rem;
   left: 2rem;
+}
+
+.heading-overlay6 {
+  top: 6rem;
+  right: 3rem;
 }
 
 .black {

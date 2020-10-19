@@ -193,6 +193,16 @@
   left: 12rem;
 }
 
+.heading-overlay8 {
+  bottom: 2rem;
+  left: 6rem;
+}
+
+.heading-overlay9 {
+  top: 2rem;
+  left: 6rem;
+}
+
 .black {
   color: black;
 }
@@ -210,6 +220,12 @@
   height: 1000px;
   background-size: cover;
 }
+.mountain2-bg{
+  background: url("../images/paula-vermeulen-_f2m3mEkaaU-unsplash.jpg") no-repeat right top;
+  height: 600px;
+  background-size: cover;
+}
+
 .coin-display {
   margin-bottom: 2rem;
 }

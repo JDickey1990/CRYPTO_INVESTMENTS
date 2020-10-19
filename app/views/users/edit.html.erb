@@ -1,9 +1,24 @@
-<p>
-<h1>Make changes to your User account info here</h1>
-<form action= "/users/<%= @user.id %>" method= "post">
-<input id="hidden" type="hidden" name="_method" value="patch">
-<br><label>Username<label><br>
-<input type = "text" name = "username"id = "username" placeholder=<%="#{@user.username}"%>><br>
-<br><input type= submit value= "Submit">
-</p>
-</form>
+<div class="container">
+    <header class="relative mountain2-bg">
+
+        <h1 class="black absolute heading-overlay">Make changes to your User account info here</h1>
+
+        <div class="black absolute heading-overlay12">
+            <form action= "/users/<%= @user.id %>" method= "post">
+                <input id="hidden" type="hidden" name="_method" value="patch">
+                <br><label>Username<label><br>
+                <input type = "text" name = "username"id = "username" placeholder=<%="#{@user.username}"%>><br>
+                <br><input type= submit value= "Submit"class="red bold">
+            </form>
+        </div>
+
+        <div class="sidebarss">
+            <h3 class=absolute heading-overlay>Links</h3><br>
+            <li><b><br><a href="/coins"class="grey">All Crypto Investments</a><br></li>
+            <li><b><br><a href="/logout"class="grey">Log Out</a><br></li>
+            <li><b><br><a href="/users/<%=@user.id%>/edit"class="grey">Edit this User</a><br></li>
+        </div> 
+
+    </header>
+
+</div>

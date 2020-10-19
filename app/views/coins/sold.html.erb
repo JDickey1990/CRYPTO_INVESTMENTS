@@ -1,40 +1,31 @@
 <div class="container">
-  <header><></header>
-  <div class="col-md-8 col-md-offset-2">
-  
-    <div class="content">
-    
-<h1><%="#{@coin.name}"%></h1>
-<h2><%="Symbol: #{@coin.symbol}"%></h2>
-<h2><%="Coin Quantity: #{@coin.quantity}"%></h2>
-<h2><%="Amount Invested: #{@coin.amount_invested}"%></h2>
-<h2><%= "Average Coin Price:#{@coin.average_coin_price}"%></h2>
+<header class="relative mountain2-bg">
 
+  <h1 class="black absolute heading-overlay">Crypto Investments</h1>
+  <h2 class="red absolute heading-overlay6">Update Investment</h2>
 
-
-
-<p>
-<h3>Update your Crypto Investment  with recent SELL transactions</h3>
-<form action= "/coins/<%= @coin.id %>/sold" method= "post">
-<input id="hidden" type="hidden" name="_method" value="patch">
-<br><label>Coin Quantity<label><br>
-<input type = "text" name = "quantity"id = "quantity"><br>
-<br><label>Cost<label><br>
-<input type = "text" name = "cost"id = "cost"><br>
-<br><input type= submit value= "Submit">
-</p>
-</form>
-
+    <div class="black absolute heading-overlay9">
+        <h3><%= "#{@coin.name}"%></h3>
+        <p><%= "Coin Symbol:#{@coin.symbol}"%></p>
+        <p><%= "Coin Quantity:#{@coin.quantity}"%></p>
+        <p><%= "Amount Invested:#{@coin.amount_invested}"%></p>
+        <p><%= "Average Coin Price:#{@coin.average_coin_price}"%></p>
     </div>
 
-    <div class="sidebar">
-      <h3>Links</h3>
-      <li><b><br><a href="/coins/<%=@coin.id%>/edit">Edit this Investment</a><br></li>
-        <li><b><br><a href="/coins/new">New Coin Transaction</a><br><li>
-        <li><b><br><a href="/logout">Log Out</a><br></li>
-        <li><b><br><a href="/coins">All Crypto Investments</a><br></li>
-      </ul>
-    </div>
+    <h3 class="black absolute heading-overlay10">
+        <form action= "/coins/<%= @coin.id %>/sold" method= "post">
+        <input id="hidden" type="hidden" name="_method" value="patch">
+        <label>Coin Quantity<label><br>
+        <input type = "text" name = "quantity"id = "quantity">
+        <br><label>Cost<label><br>
+        <input type = "text" name = "cost"id = "cost"><br>
+            <input type= submit value= "UPDATE" class="red bold">
+        </form>
+   </h3>
 
-  </div>
+  <div class="sidebarss">
+    <h3 class=absolute heading-overlay>Links</h3><br>
+      <li><b><br><a href="/logout" class="grey" >Log Out</a><br></li>
+      <li><b><br><a href="/coins" class="grey" >All Crypto Investments</a><br></li>
+  </div> 
 </div>

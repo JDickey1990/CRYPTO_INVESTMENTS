@@ -1,36 +1,40 @@
+
 <div class="container">
-  <header><></header>
-  <div class="col-md-8 col-md-offset-2">
-   
-    <div class="content">
-    <h2><%= "USERNAME: #{@user.username.upcase}"%></h2><br>
-    <br><h3><%= "Account was created:#{@user.created_at}"%></h3>
-    <br><h3><%= "Account was updated:#{@user.updated_at}"%></h3>
+    <header class="relative mountain2-bg">
 
-    <p><% @coins.each do |coin| %>
-        <h1><%= "#{coin.name}"%></h1>
-        <h3><%= "Coin Symbol:#{coin.symbol}"%><h3>
-        <br><h3><%= "#{coin.name} was created:#{coin.created_at}"%></h3>
-        <h3><%= "#{coin.name} was updated:#{coin.updated_at}"%></h3>
-        <li><b><br><a href= <%="/coins/#{coin.id}"%>>Details...</a><br></li>
-        <% end %></p>
+        <h1 class="black absolute heading-overlay">Crypto Investments</h1>
 
+        <h2><%="#{@user.username}'s Account Info"%></h2>
 
-    <br>
+        <div class="sidebar">
+            <h3 class=absolute heading-overlay>Links</h3><br>
+            <li><b><br><a href="/coins"class="grey">All Crypto Investments</a><br></li>
+            <li><b><br><a href="/logout"class="grey">Log Out</a><br></li>
+            <li><b><br><a href="/users/<%=@user.id%>/edit"class="grey">Edit this User</a><br></li>
+        </div> 
+
+    </header>
+
+    <div class="black absolute heading-overlay7">
+
+    <h2><%= "USERNAME: #{@user.username.upcase}"%></h2>
+    <h3><%= "Account was created:#{@user.created_at}"%></h3>
+    <h3><%= "Account was updated:#{@user.updated_at}"%></h3>
     <form action="/users/<%= @user.id %>/delete" method="post">
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="DELETE ACCOUNT">
-    </form>
+    <input type="submit" value="DELETE ACCOUNT"class="red bold">
+    </form><br>
+    
+        <br><% @coins.each do |coin| %>
+            <div class="coin-display">
+            <h3><%= "#{coin.name}" %></h3>
+            <p class="small-text"><%="#{coin.name} was created:#{coin.created_at}" %></p>
+            <p class="small-text"><%="#{coin.name} was updated:#{coin.updated_at}" %></p>
+            <a href= <%="/coins/#{coin.id}"%> class="red">Details...</a>
+            </div>
+        <% end %>
     </div>
 
-    <div class="sidebar">
-      <h3>Links</h3>
-      <li><b><br><a href="/users/<%=@user.id%>/edit">Edit this User</a><br></li>
-        <li><b><br><a href="/coins/new">New Coin Transaction</a><br><li>
-        <li><b><br><a href="/logout">Log Out</a><br></li>
-        <li><b><br><a href="/coins">All Crypto Investments</a><br></li>
-      </ul>
-    </div>
+  
 
-  </div>
 </div>

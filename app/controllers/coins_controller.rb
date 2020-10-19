@@ -85,7 +85,7 @@ class CoiNsController < ApplicationController
 
   # PATCH: /coins/5/purchased
   patch "/coins/:id/purchased" do
-    # binding.pry
+    #  binding.pry
     @coin = Coin.find_by_id(params[:id])
     a= @coin.quantity 
     b = params[:quantity].to_d

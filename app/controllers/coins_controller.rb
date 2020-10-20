@@ -55,11 +55,11 @@ class CoiNsController < ApplicationController
 
   # PATCH: /coins/5
   patch "/coins/:id" do
-    # binding.pry
-    @coin = Coin.find(params[:id])
+    #  binding.pry
+    @coin = Coin.find_by_id(params[:id])
     if params[:name] == "" || params[:symbol] == "" || params[:quantity] == "" || params[:amount_invested] == "" || params[:average_coin_price] == ""  
       redirect "/coins/#{@coin.id}/edit"
-    elsif  @coin.user_id != current_user.id  
+    elsif  @coin.user_id.to_i != current_user.id  
       redirect "/coins/#{@coin.id}/edit"
     else  
       @coin.name = params[:name]

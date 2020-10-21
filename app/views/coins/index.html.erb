@@ -2,26 +2,25 @@
 <div class="container">
   <header class="relative mountain-bg">
 
-    <h1 class="black absolute heading-overlay">Crypto Investments</h1>
-    <h2 class="red absolute heading-overlay6">List of Investments</h2>
+    <h1 class="white absolute heading-overlay">Crypto Investments</h1>
+    <h2 class="white absolute heading-overlay6">List of Investments</h2>
 
-    <h2><%="#{@user.username}'s Investments"%></h2>
+    <h2 class="white"><%="#{@user.username}'s Investments"%></h2>
 
-    <div class="sidebarsss">
-      <h3 class=absolute heading-overlay>Links</h3><br>
-      <li><b><br><a href="/coins/new"class="grey">New Coin Transaction</a></li>
-      <li><b><br><a href="/logout"class="grey">Log Out</a><br></li>
-      <li><b><br><a href=<%="/users/#{@user.id}"%> class="grey">User Profile</a><br></li>
+    <div class="sidebar-index">
+      <h3 class= "white">Links</h3><br>
+      <b><br><a href="/coins/new"class="white">New Coin Transaction</a></li>
+      <li><b><br><a href="/logout"class="white">Log Out</a><br></li>
+      <li><b><br><a href=<%="/users/#{@user.id}"%> class="white">User Profile</a><br></li>
     </div> 
 
   </header>
 
-  <div class="black absolute heading-overlay7">
+  <div class="white absolute heading-overlay7">
     <% @coins.each do |coin| %>
       <div class="coin-display">
-        <h3><%= "#{coin.name}" %></h3>
+        <h3> <a href= <%="/coins/#{coin.id}"%> class="white"><%= "#{coin.name}" %></a></h3>
         <p class="small-text">Coin Symbol: <%="#{coin.symbol}" %></p>
-        <a href= <%="/coins/#{coin.id}"%> class="red">Details...</a>
       </div>
     <% end %>
   </div>

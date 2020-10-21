@@ -1,8 +1,10 @@
 
 <div class="container">
-<header class="relative">
-  <img src="images/chris-liverani-dBI_My696Rk-unsplash.jpg" class="img-responsive main-image">
+<header class="relative login-bg">
   <h1 class="white absolute heading-overlay">Crypto Investments</h1>
+ 
+    
+
 
   <h3 class="black absolute heading-overlay2">Log In
     <form action="/login" method="POST">
@@ -11,6 +13,16 @@
       <input type="submit" value="Login">
        <br><h6><a href="/signup" class="black" >Become a member </a></h6>
     </form>
+    
+    <div>
+      <p class="red bold absolute">
+        <% flash_types.select{ |kind| flash.has?(kind) }.each do |kind| %>
+        <div class="flash <%= kind %>">
+          <%= flash[kind] %>
+        </div>
+        <% end %>
+      </p>
+    </div>
   </h3>
 </div>
 

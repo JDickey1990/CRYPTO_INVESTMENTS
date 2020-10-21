@@ -70,7 +70,7 @@
   }
 
   .sidebarss {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.25);
     float: right;
     padding: 2.08333333333%;
     width: 30%;
@@ -78,12 +78,34 @@
   }
 
   .sidebarsss {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.2);
     float: right;
     padding: 2.08333333333%;
     width: 30%;
     margin-top: 269px;
   }
+  .sidebar-index {
+    background: rgba(255, 255, 255, 0.2);
+    float: right;
+    padding: 2.08333333333%;
+    width: 30%;
+    margin-top: 389px;
+}
+.sidebar-show {
+  background: rgba(255, 255, 255, 0.2);
+  float: right;
+  padding: 2.08333333333%;
+  width: 30%;
+  margin-top: 409px;
+}
+
+.sidebar-user-show {
+  background: rgba(255, 255, 255, 0.2);
+  float: right;
+  padding: 2.08333333333%;
+  width: 30%;
+  margin-top: 429px;
+}
 
   .sidebar ul {
     font-size: 14px;
@@ -226,13 +248,19 @@
 }
 
 .mountain-bg{
-  background: url("../images/paula-vermeulen-_f2m3mEkaaU-unsplash.jpg") no-repeat right top;
-  height: 1000px;
+  background: url("../images/greg-rakozy-oMpAz-DN-9I-unsplash.jpg") no-repeat right top;
+  height: 650px;
   background-size: cover;
 }
 .mountain2-bg{
-  background: url("../images/paula-vermeulen-_f2m3mEkaaU-unsplash.jpg") no-repeat right top;
+  background: url("../images/hans-eiskonen-wn57cSQ7VzI-unsplash.jpg") no-repeat right top;
   height: 600px;
+  background-size: cover;
+}
+
+.login-bg{
+  background: url("../images/chris-liverani-dBI_My696Rk-unsplash.jpg") no-repeat right top;
+  height: 700px;
   background-size: cover;
 }
 
@@ -242,6 +270,7 @@
 
 .small-text{
   font-size: .75rem;
+  color: white
 }
 
 .coin-details-bg{

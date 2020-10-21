@@ -1,5 +1,5 @@
 class UseRsController < ApplicationController
-
+ 
   # GET: /login
   get "/login" do
     if logged_in?
@@ -12,6 +12,7 @@ class UseRsController < ApplicationController
   post '/login' do 
     #  binding.pry
     if params[:username] == "" || params[:password] == "" 
+      flash[:error] = "Please fill out the username and password fields."
         redirect "/login"
     else 
         user = User.find_by(username: params[:username])
@@ -35,8 +36,7 @@ class UseRsController < ApplicationController
 
   # POST: /users
   post "/signup" do
-      u = User.find_by(username: params[:username])
-    if u != nil || params[:username] == "" || params[:password] == "" 
+    if params[:username] == "" || params[:password] == "" 
         redirect "/signup"
     else
         user = User.new(:username => params[:username], :password => params[:password])	
@@ -70,9 +70,10 @@ class UseRsController < ApplicationController
 
   # PATCH: /users/5
   patch "/users/:id" do
+    # binding.pry
     @user = User.find_by_id(params[:id])
     if params[:username] == "" 
-      redirect "/users/#{@user.id}"
+      redirect "/users/#{@user.id}/edit"
     else
       @user.username = params[:username]
       @user.save

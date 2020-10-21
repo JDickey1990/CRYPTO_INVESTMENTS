@@ -1,11 +1,13 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-
+    
+    use Rack::Flash, :sweep => true
     enable :sessions
     set :session_secret, "password security"
   end
@@ -22,6 +24,10 @@ class ApplicationController < Sinatra::Base
 
     def logged_in?
         !!current_user
+    end
+
+    def flash_types
+      [:success, :notice, :warning, :error]
     end
   end  
 

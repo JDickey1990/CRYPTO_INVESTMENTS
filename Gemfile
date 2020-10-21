@@ -11,7 +11,8 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
-gem 'bootstrap'
+gem 'rack-flash3'
+
 
 
 group :test do

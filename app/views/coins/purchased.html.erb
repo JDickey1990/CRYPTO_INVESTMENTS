@@ -2,7 +2,7 @@
 <header class="relative mountain2-bg">
 
   <h1 class="black absolute heading-overlay">Crypto Investments</h1>
-  <h2 class="red absolute heading-overlay6">Update Investment</h2>
+  <h2 class="grey absolute heading-overlay6">Update Investment</h2>
 
     <div class="black absolute heading-overlay9">
         <h3><%= "#{@coin.name}"%></h3>
@@ -15,9 +15,9 @@
     <h3 class="black absolute heading-overlay10">
         <form action= "/coins/<%= @coin.id %>/purchased" method= "post">
         <input id="hidden" type="hidden" name="_method" value="patch">
-            <label>Coin Quantity<label><br>
+            <label>Quantity Purchased<label><br>
             <input type = "text" name = "quantity"id = "quantity">
-            <br><label>Cost<label><br>
+            <br><label>Amount Paid<label><br>
             <input type = "text" name = "cost"id = "cost"><br>
             <input type= submit value= "UPDATE" class="red bold">
         </form>

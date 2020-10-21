@@ -3,6 +3,7 @@ class UseRsController < ApplicationController
   # GET: /login
   get "/login" do
     if logged_in?
+      flash[:error] = "You are currently logged in."
       redirect to '/coins' 
     else
       erb :"/users/login.html"
@@ -20,6 +21,7 @@ class UseRsController < ApplicationController
             session[:user_id] = user.id
             redirect "/coins"
         else
+          flash[:error] = "Incorrect Username or Password."
             redirect "/login"
         end
     end

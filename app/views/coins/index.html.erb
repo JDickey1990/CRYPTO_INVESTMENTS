@@ -5,7 +5,16 @@
     <h1 class="white absolute heading-overlay">Crypto Investments</h1>
     <h2 class="white absolute heading-overlay6">List of Investments</h2>
 
-    <h2 class="white"><%="#{@user.username}'s Investments"%></h2>
+    <h2 class="white"><%="#{@user.username}'s Investments"%>
+    <h6>
+      <% flash_types.select{ |kind| flash.has?(kind) }.each do |kind| %>
+      <div class="flash <%= kind %> red bold">
+        <%= flash[kind] %>
+      </div>
+      <% end %>
+    </h6>
+
+    </h2>
 
     <div class="sidebar-index">
       <h3 class= "white">Links</h3><br>

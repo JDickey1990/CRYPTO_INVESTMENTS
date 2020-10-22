@@ -240,6 +240,12 @@
   left: 32rem;
 }
 
+.heading-overlay14 {
+  top: 15rem;
+  left: 2rem;
+  right: 2rem;
+}
+
 .black {
   color: black;
 }
@@ -270,7 +276,7 @@
 }
 
 .welcome-bg{
-  background: url("../images/nasa--hI5dX2ObAs-unsplash.jpg") no-repeat right top;
+  background: url("../images/nasa-Q1p7bh3SHj8-unsplash.jpg") no-repeat right top;
   height: 800px;
   background-size: cover;
 }

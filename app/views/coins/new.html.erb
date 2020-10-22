@@ -5,6 +5,17 @@
   <h2 class="grey absolute heading-overlay6">Create A New Investment</h2>
 
     <h3 class="black absolute heading-overlay8">
+        <div>
+          <h3>
+              <% flash_types.select{ |kind| flash.has?(kind) }.each do |kind| %>
+                  <div class="flash <%= kind %>">
+                      <%= flash[kind] %>
+                  </div>
+              <% end %>
+            </h3>
+        </div><br>
+
+
         <form action= '/coins' method= "post">
             <label>Coin Name<label><br>
             <input type = "text" name = "name"id = "name">

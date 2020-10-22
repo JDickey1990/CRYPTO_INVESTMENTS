@@ -2,7 +2,17 @@
 <header class="relative mountain2-bg">
 
   <h1 class="black absolute heading-overlay">Crypto Investments</h1>
-  <h2 class="grey absolute heading-overlay6">Update Investment</h2>
+  <h2 class="grey absolute heading-overlay6">Update Investment
+      <div>
+        <h3 class= "red">
+          <% flash_types.select{ |kind| flash.has?(kind) }.each do |kind| %>
+            <div class="flash <%= kind %>">
+              <%= flash[kind] %>
+            </div>
+            <% end %>
+        </h3>
+      </div><br>
+  </h2>
 
     <div class="black absolute heading-overlay9">
         <h3><%= "#{@coin.name}"%></h3>

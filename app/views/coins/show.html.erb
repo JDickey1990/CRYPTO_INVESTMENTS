@@ -4,18 +4,18 @@
 
     <h1 class="white absolute heading-overlay">Crypto Investments</h1>
 
-    <h3 class="white absolute heading-overlay4"><%= "#{@coin.name}"%><br>
-      <%= "Coin Symbol:#{@coin.symbol}"%><br>
-      <%= "Coin Quantity:#{@coin.quantity}"%><br>
-      <%= "Amount Invested:#{@coin.amount_invested}"%><br>
-      <%= "Average Coin Price:#{@coin.average_coin_price}"%>
+    <h3 class="white absolute heading-overlay4"><%= "#{coin.name}"%><br>
+      <%= "Coin Symbol:#{coin.symbol}"%><br>
+      <%= "Coin Quantity:#{coin.quantity}"%><br>
+      <%= "Amount Invested:#{coin.amount_invested.round(2)}"%><br>
+      <%= "Average Coin Price:#{coin.average_coin_price.round(2)}"%>
     </h3>
 
     <h3 class="black absolute heading-overlay5">
-        <li><a href="/coins/<%=@coin.id%>/purchased" class="white" >Update with recent BUY transactions</a></li>
-        <li><a href="/coins/<%=@coin.id%>/sold" class="white" >Update with recent SELL transactions</a></li>
+        <li><a href="/coins/<%=coin.id%>/purchased" class="white" >Update with recent BUY transactions</a></li>
+        <li><a href="/coins/<%=coin.id%>/sold" class="white" >Update with recent SELL transactions</a></li>
 
-        <form action="/coins/<%= @coin.id %>/delete" method="post">
+        <form action="/coins/<%= coin.id %>/delete" method="post">
           <input id="hidden" type="hidden" name="_method" value="delete">
           <input type="submit" value="DELETE THIS INVESTMENT"class="red bold">
         </form>

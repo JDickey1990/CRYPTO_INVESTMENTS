@@ -1,29 +1,42 @@
 <div class="container">
-<header class="relative mountain2-bg">
+  <header class="relative mountain2-bg">
 
-  <h1 class="black absolute heading-overlay">Crypto Investments</h1>
-  <h2 class="grey absolute heading-overlay6">Edit Investment</h2>
+    <h1 class="black absolute heading-overlay">Crypto Investments</h1>
+    <h2 class="grey absolute heading-overlay6">Edit Investment</h2>
 
-    <h3 class="black absolute heading-overlay8">
-    <form action= <%="/coins/#{@coin.id}"%> method= "post">
-        <input id="hidden" type="hidden" name="_method" value="patch">
-            <label>Coin Name<label><br>
-            <input type = "text" name = "name"id = "name" value=<%= "#{@coin.name}"%>>
-            <br><label>Coin Symbol<label><br>
-            <input type = "text" name = "symbol"id = "symbol" value=<%="#{@coin.symbol}"%> >
-            <br><label>Coin Quantity<label><br>
-            <input type = "text" name = "quantity"id = "quantity" value=<%="#{@coin.quantity}"%>>
-            <br><label>Amount Invested<label><br>
-            <input type = "text" name = "amount_invested"id = "amount_invested" value=<%="#{@coin.amount_invested}"%>>
-            <br><label>Average Coin Price<label><br>
-            <input type = "text" name = "average_coin_price"id = "average_coin_price" value=<%="#{@coin.average_coin_price}"%>><br>
-            <input type= submit value= "UPDATE" class="red bold">
+      <h3 class="black absolute heading-overlay8">
+        <div>
+          <h3>
+            <% flash_types.select{ |kind| flash.has?(kind) }.each do |kind| %>
+              <div class="flash <%= kind %>">
+                <%= flash[kind] %>
+              </div>
+            <% end %>
+          </h3>
+        </div><br>
+
+
+        <form action= <%="/coins/#{@coin.id}"%> method= "post">
+          <input id="hidden" type="hidden" name="_method" value="patch">
+              <label>Coin Name<label><br>
+              <input type = "text" name = "name"id = "name" value=<%= "#{coin.name}"%>>
+              <br><label>Coin Symbol<label><br>
+              <input type = "text" name = "symbol"id = "symbol" value=<%="#{coin.symbol}"%> >
+              <br><label>Coin Quantity<label><br>
+              <input type = "text" name = "quantity"id = "quantity" value=<%="#{coin.quantity}"%>>
+              <br><label>Amount Invested<label><br>
+              <input type = "text" name = "amount_invested"id = "amount_invested" value=<%="#{coin.amount_invested}"%>>
+              <br><label>Average Coin Price<label><br>
+              <input type = "text" name = "average_coin_price"id = "average_coin_price" value=<%="#{coin.average_coin_price}"%>><br>
+              <input type= submit value= "UPDATE" class="red bold">
         </form>
-   </h3>
 
-  <div class="sidebarss">
-    <h3 class=absolute heading-overlay>Links</h3><br>
+      </h3>
+
+    <div class="sidebarss">
+      <h3 class=absolute heading-overlay>Links</h3><br>
       <li><b><br><a href="/logout" class="grey" >Log Out</a><br></li>
       <li><b><br><a href="/coins" class="grey" >All Crypto Investments</a><br></li>
-  </div> 
+    </div> 
+  </header>
 </div>

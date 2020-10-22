@@ -26,6 +26,10 @@ class ApplicationController < Sinatra::Base
         !!current_user
     end
 
+    def coin
+      @coin = Coin.find_by_id(params[:id])
+    end
+
     def flash_types
       [:success, :notice, :warning, :error]
     end

@@ -5,14 +5,14 @@
     <h1 class="white absolute heading-overlay">Crypto Investments</h1>
     <h2 class="white absolute heading-overlay6">List of Investments</h2>
 
-    <h2 class="white"><%="#{@user.username}'s Investments"%>
-    <h6>
+    <h2 class="white"><%="#{current_user.username}'s Investments"%>
+    <h3>
       <% flash_types.select{ |kind| flash.has?(kind) }.each do |kind| %>
       <div class="flash <%= kind %> red bold">
         <%= flash[kind] %>
       </div>
       <% end %>
-    </h6>
+    </h3>
 
     </h2>
 
@@ -20,7 +20,7 @@
       <h3 class= "white">Links</h3><br>
       <b><br><a href="/coins/new"class="white">New Coin Transaction</a></li>
       <li><b><br><a href="/logout"class="white">Log Out</a><br></li>
-      <li><b><br><a href=<%="/users/#{@user.id}"%> class="white">User Profile</a><br></li>
+      <li><b><br><a href=<%="/users/#{current_user.id}"%> class="white">User Profile</a><br></li>
     </div> 
 
   </header>

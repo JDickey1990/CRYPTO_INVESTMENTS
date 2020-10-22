@@ -8,8 +8,8 @@
         <h3><%= "#{@coin.name}"%></h3>
         <p><%= "Coin Symbol:#{@coin.symbol}"%></p>
         <p><%= "Coin Quantity:#{@coin.quantity}"%></p>
-        <p><%= "Amount Invested:#{@coin.amount_invested}"%></p>
-        <p><%= "Average Coin Price:#{@coin.average_coin_price}"%></p>
+        <p><%= "Amount Invested:#{@coin.amount_invested.round(2)}"%></p>
+        <p><%= "Average Coin Price:#{@coin.average_coin_price.round(2)}"%></p>
     </div>
 
     <h3 class="black absolute heading-overlay10">

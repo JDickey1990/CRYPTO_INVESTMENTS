@@ -235,6 +235,11 @@
   left: 12rem;
 }
 
+.heading-overlay13 {
+  top: 13rem;
+  left: 5rem;
+}
+
 .black {
   color: black;
 }
@@ -263,6 +268,13 @@
   height: 700px;
   background-size: cover;
 }
+
+.welcome-bg{
+  background: url("../images/nasa--hI5dX2ObAs-unsplash.jpg") no-repeat right top;
+  height: 800px;
+  background-size: cover;
+}
+
 
 .coin-display {
   margin-bottom: 2rem;

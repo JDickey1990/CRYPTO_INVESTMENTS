@@ -4,23 +4,23 @@
 
         <h1 class="white absolute heading-overlay">Crypto Investments</h1>
 
-        <h2 class="white"><%="#{@user.username}'s Account Info"%></h2>
+        <h2 class="white"><%="#{current_user.username}'s Account Info"%></h2>
 
         <div class="sidebar-index">
             <h3 class="white">Links</h3><br>
             <li><b><br><a href="/coins"class="white">All Crypto Investments</a><br></li>
             <li><b><br><a href="/logout"class="white">Log Out</a><br></li>
-            <li><b><br><a href="/users/<%=@user.id%>/edit"class="white">Edit this User</a><br></li>
+            <li><b><br><a href="/users/<%=current_user.id%>/edit"class="white">Edit this User</a><br></li>
         </div> 
 
     </header>
 
     <div class="white absolute heading-overlay7">
 
-    <h2><%= "USERNAME: #{@user.username.upcase}"%></h2>
-    <h3><%= "Account was created:#{@user.created_at}"%></h3>
-    <h3><%= "Account was updated:#{@user.updated_at}"%></h3>
-    <form action="/users/<%= @user.id %>/delete" method="post">
+    <h2><%= "Username: #{current_user.username}"%></h2>
+    <h3><%= "Account was created:#{current_user.created_at}"%></h3>
+    <h3><%= "Account was updated:#{current_user.updated_at}"%></h3>
+    <form action="/users/<%= current_user.id %>/delete" method="post">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="DELETE ACCOUNT"class="red bold">
     </form><br>

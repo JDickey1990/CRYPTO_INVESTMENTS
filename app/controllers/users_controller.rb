@@ -11,12 +11,11 @@ class UseRsController < ApplicationController
   end
 
   post '/login' do 
-    #  binding.pry
     if params[:username] == "" || params[:password] == "" 
       flash[:error] = "Please fill out the username and password fields."
-        redirect "/login"
+      redirect "/login"
     else 
-        user = User.find_by(username: params[:username])
+         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
             redirect "/coins"
@@ -30,7 +29,8 @@ class UseRsController < ApplicationController
   # GET: /users/new
   get "/signup" do
     if logged_in?
-        redirect to '/coins' 
+      flash[:error] = "You are currently logged in."
+      redirect to '/coins' 
     else
       erb :"/users/signup.html"
     end
@@ -39,14 +39,16 @@ class UseRsController < ApplicationController
   # POST: /users
   post "/signup" do
     if params[:username] == "" || params[:password] == "" 
-        redirect "/signup"
+      flash[:error] = "Please fill out the username and password fields."
+      redirect "/signup"
     else
         user = User.new(:username => params[:username], :password => params[:password])	
         if user.save
             session[:user_id] = user.id
             redirect "/coins"
         else
-            redirect "/signup"
+          flash[:error] = "Username is in use or Password is invalid."
+          redirect "/signup"
         end
       end
   end
@@ -58,38 +60,38 @@ class UseRsController < ApplicationController
 
   # GET: /users/5
   get "/users/:id" do
-    @user = User.find_by_id(params[:id])
-    @coins = @user.coins.all
+    @coins = current_user.coins.all
 
     erb :"/users/show.html"
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
-    @user = User.find_by_id(params[:id])
     erb :"/users/edit.html"
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
-    # binding.pry
-    @user = User.find_by_id(params[:id])
-    if params[:username] == "" 
-      redirect "/users/#{@user.id}/edit"
+    #  binding.pry
+    if params[:username] == "" || params[:password]== ""
+      flash[:error] = "Please fill out the username and password fields."
+      redirect "/users/#{currentuser.id}/edit"
     else
-      @user.username = params[:username]
-      @user.save
-      redirect "/users/#{@user.id}"
+      current_user.username = params[:username]
+      if current_user.save
+        redirect "/users/#{current_user.id}"
+      else
+        redirect "/coins"
+      end
     end
   end
   
-
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
     user = User.find_by_id(params[:id])
     session.clear
     user.destroy
-      redirect "/login"
+      redirect "/"
   end
 end
 

@@ -13,9 +13,9 @@
       <input type="submit" value="Login">
        <br><h6><a href="/signup" class="black" >Become a member </a></h6>
     </form>
-    
+
     <div>
-      <p class="red bold absolute">
+      <p>
         <% flash_types.select{ |kind| flash.has?(kind) }.each do |kind| %>
         <div class="flash <%= kind %>">
           <%= flash[kind] %>

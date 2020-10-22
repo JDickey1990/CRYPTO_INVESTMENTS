@@ -3,11 +3,11 @@ class CoiNsController < ApplicationController
   # GET: /coins
   get "/coins" do
     if logged_in? 
-      @user = User.find_by_id(session[:user_id])
-      @coins = @user.coins.all
+      @coins = current_user.coins.all
       erb :"/coins/index.html"
     else
-      erb :'login.html'
+      flash[:error] = "You must be logged in to access this page."
+      erb :'/users/login.html'
     end
   end
 
@@ -18,9 +18,7 @@ class CoiNsController < ApplicationController
 
   # POST: /coins
   post "/coins" do
-    # binding.pry
-    user = User.find_by_id(session[:user_id])
-    @coin =user.coins.create(params)
+    @coin = current_user.coins.create(params)
     e = @coin.amount_invested.to_f
     f = @coin.quantity
    @coin.average_coin_price = e/f
@@ -30,39 +28,33 @@ class CoiNsController < ApplicationController
 
   # GET: /coins/5
   get "/coins/:id" do
-    # binding.pry
-    @coin = Coin.find(params[:id])
-    if @coin.user_id.to_i != current_user.id
-        # flash[:alert] = "Access Denied"
+    if coin.user_id.to_i != current_user.id
+        flash[:error] = "Access Denied"
         redirect "/coins"
     else 
       erb  :"/coins/show.html"
     end 
   end
 
-
-
   # GET: /coins/5/edit
   get "/coins/:id/edit" do
-    @coin = Coin.find_by_id(params[:id])
-    if @coin.user_id.to_i != current_user.id
+    if coin.user_id.to_i != current_user.id
+      flash[:error] = "Access Denied"
       redirect "/coins"
     else 
-      #flash error
+      erb :"/coins/edit.html"
     end
-    erb :"/coins/edit.html"
   end
 
   # PATCH: /coins/5
   patch "/coins/:id" do
-    #  binding.pry
-    @coin = Coin.find_by_id(params[:id])
-    if params[:name] == "" || params[:symbol] == "" || params[:quantity] == "" || params[:amount_invested] == "" || params[:average_coin_price] == ""  
-      redirect "/coins/#{@coin.id}/edit"
-    elsif  @coin.user_id.to_i != current_user.id  
-      redirect "/coins/#{@coin.id}/edit"
+    if params[:name] == "" || params[:symbol] == "" || params[:quantity] == "" || params[:amount_invested] == "" || params[:average_coin_price] == "" 
+      flash[:error] = "Please fill out all of the available fields" 
+      redirect "/coins/#{coin.id}/edit"
+    elsif  coin.user_id.to_i != current_user.id  
+      redirect "/coins/#{coin.id}/edit"
     else  
-      @coin.name = params[:name]
+      @coin.name = params[:name] 
       @coin.symbol = params[:symbol]
       @coin.quantity = params[:quantity]
       @coin.amount_invested = params[:amount_invested]
@@ -74,25 +66,23 @@ class CoiNsController < ApplicationController
 
   # GET: /coins/:id/purchased
   get "/coins/:id/purchased" do
-    @coin = Coin.find_by_id(params[:id])
-    if @coin.user_id.to_i != current_user.id
+    if coin.user_id.to_i != current_user.id
+      flash[:error] = "Access Denied"
       redirect "/coins"
     else 
-      #flash error
+      erb :"/coins/purchased.html"
     end
-    erb :"/coins/purchased.html"
   end
 
   # PATCH: /coins/5/purchased
   patch "/coins/:id/purchased" do
-    #  binding.pry
     @coin = Coin.find_by_id(params[:id])
     a= @coin.quantity 
     b = params[:quantity].to_d
     @coin.quantity = a+b
 
     c= @coin.amount_invested
-    d= params[:cost].to_f
+    d= params[:cost].to_d
     @coin.amount_invested = c+d
   
     e = @coin.amount_invested
@@ -107,16 +97,15 @@ class CoiNsController < ApplicationController
   get "/coins/:id/sold" do
     @coin = Coin.find_by_id(params[:id])
     if @coin.user_id.to_i != current_user.id
+      flash[:error] = "Access Denied"
       redirect '/coins'
     else
-      #flash error
+      erb :"/coins/sold.html"
     end
-    erb :"/coins/sold.html"
   end
 
    # PATCH: /coins/5/sold
    patch "/coins/:id/sold" do
-    #  binding.pry
     @coin = Coin.find_by_id(params[:id])
     a= @coin.quantity 
     b = params[:quantity].to_d

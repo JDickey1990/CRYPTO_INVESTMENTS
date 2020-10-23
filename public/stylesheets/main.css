@@ -186,12 +186,12 @@
 }
 
 .heading-overlay2 {
-  top: 2rem;
-  left: 2rem;
+  top: 6rem;
+  left: 9rem;
 }
 
 .heading-overlay3 {
-  top: 6rem;
+  top: 9rem;
   right: 10rem;
 }
 
@@ -260,7 +260,7 @@
 
 .mountain-bg{
   background: url("../images/greg-rakozy-oMpAz-DN-9I-unsplash.jpg") no-repeat right top;
-  height: 650px;
+  height: 1000px;
   background-size: cover;
 }
 .mountain2-bg{

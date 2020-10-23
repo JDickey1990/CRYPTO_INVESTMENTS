@@ -19,7 +19,7 @@
 
             <form action= <%="/users/#{current_user.id}"%> method= "post">
                 <input id="hidden" type="hidden" name="_method" value="patch">
-                <br><label>Username<label><br>
+                <br><label>New Username<label><br>
                 <input type = "text" name = "username"id = "username" placeholder=<%="#{current_user.username}"%>><br>
                 <br><label>Password<label><br>
                 <input type = "text" name = "password"id = "password" placeholder="password"><br>

@@ -72,17 +72,16 @@ class UseRsController < ApplicationController
 
   # PATCH: /users/5
   patch "/users/:id" do
-    #  binding.pry
-    if params[:username] == "" || params[:password]== ""
+      #  binding.pry
+    if params[:username] == "" || params[:password]== "" 
       flash[:error] = "Please fill out the username and password fields."
-      redirect "/users/#{currentuser.id}/edit"
-    else
-      current_user.username = params[:username]
-      if current_user.save
+      redirect "/users/#{current_user.id}/edit"
+    elsif current_user.authenticate(params[:password])
+        current_user.update(username: params[:username], password: params[:password])
         redirect "/users/#{current_user.id}"
-      else
-        redirect "/coins"
-      end
+    else
+      flash[:error] = "Please fill out the correct password."
+      redirect "/users/#{current_user.id}/edit"
     end
   end
   

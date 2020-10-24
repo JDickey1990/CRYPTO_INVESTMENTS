@@ -77,11 +77,15 @@ class UseRsController < ApplicationController
       flash[:error] = "Please fill out the username and password fields."
       redirect "/users/#{current_user.id}/edit"
     elsif current_user.authenticate(params[:password])
-        current_user.update(username: params[:username], password: params[:password])
-        redirect "/users/#{current_user.id}"
+        if current_user.update(username: params[:username], password: params[:password])
+          redirect "/users/#{current_user.id}"
+        elsif
+          flash[:error] = "Uername is already in use."
+          redirect "/users/#{current_user.id}/edit"
     else
       flash[:error] = "Please fill out the correct password."
       redirect "/users/#{current_user.id}/edit"
+    end
     end
   end
   

@@ -15,7 +15,7 @@
         <li><a href="/coins/<%=coin.id%>/purchased" class="white" >Update with recent BUY transactions</a></li>
         <li><a href="/coins/<%=coin.id%>/sold" class="white" >Update with recent SELL transactions</a></li>
 
-        <form action="/coins/<%= coin.id %>/delete" method="post">
+       <form action="/coins/<%= coin.id %>/delete" method="post">
           <input id="hidden" type="hidden" name="_method" value="delete">
           <input type="submit" value="DELETE THIS INVESTMENT"class="red bold">
         </form>

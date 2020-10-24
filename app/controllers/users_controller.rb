@@ -82,11 +82,10 @@ class UseRsController < ApplicationController
         elsif
           flash[:error] = "Uername is already in use."
           redirect "/users/#{current_user.id}/edit"
-    else
+       end
+      end
       flash[:error] = "Please fill out the correct password."
       redirect "/users/#{current_user.id}/edit"
-    end
-    end
   end
   
   # DELETE: /users/5/delete
